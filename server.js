@@ -11,19 +11,15 @@ app.get("/", (req, res) => {
 });
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/players")
+  .connect("mongodb://127.0.0.1:27017/player")
   .then(() => {
-    console.log("Connected to MongoDB");
+    console.log("MongoDB connected ");
     app.listen(port, () => {
-      console.log("Example app listening on port" + port);
+      console.log("server listening on " + port);
     });
   })
-  .catch((err) => console.error("Failed to connect", err));
+  .catch((err) => console.error("Connection failed ", err));
 
-
-// app.listen(port, () => {
-//   console.log("Example app listening on port ${port}");
-// });
 
 
 app.use(express.json());
