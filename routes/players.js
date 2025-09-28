@@ -4,7 +4,7 @@ const Player = require("../models/playerModel");
 const mongoose = require("mongoose");
 
 
-// POST a new player
+// POST a new player into server 
 router.post("/", async (req, res) => {
   const { name, number, position } = req.body;
   try {
@@ -15,13 +15,12 @@ router.post("/", async (req, res) => {
   }
 });
 
-// GET all players
+// GET all players from the server 
 router.get("/", async (req, res) => {
   const players = await Player.find();
   res.status(200).json(players);
 });
 
-// GET a single player
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -59,6 +58,7 @@ router.delete("/:id", async (req, res) => {
   }
   res.status(200).json(player);
 });
+
 
 
 module.exports = router;
